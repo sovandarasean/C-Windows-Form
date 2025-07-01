@@ -34,6 +34,7 @@
             dateTimeEnd = new DateTimePicker();
             btnGenerateReport = new Button();
             label3 = new Label();
+            btnExportPdf = new Button();
             SuspendLayout();
             // 
             // dateTimeStart
@@ -75,9 +76,9 @@
             // btnGenerateReport
             // 
             btnGenerateReport.Font = new Font("Calibri", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnGenerateReport.Location = new Point(241, 194);
+            btnGenerateReport.Location = new Point(245, 199);
             btnGenerateReport.Name = "btnGenerateReport";
-            btnGenerateReport.Size = new Size(209, 55);
+            btnGenerateReport.Size = new Size(209, 40);
             btnGenerateReport.TabIndex = 4;
             btnGenerateReport.Text = "Generate Report";
             btnGenerateReport.UseVisualStyleBackColor = true;
@@ -85,6 +86,7 @@
             // 
             // label3
             // 
+            label3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label3.AutoSize = true;
             label3.Font = new Font("Calibri", 18F, FontStyle.Bold | FontStyle.Underline);
             label3.Location = new Point(183, 24);
@@ -94,17 +96,31 @@
             label3.Text = "Product Sales Reporting";
             label3.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // btnExportPdf
+            // 
+            btnExportPdf.Font = new Font("Calibri", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnExportPdf.Location = new Point(245, 245);
+            btnExportPdf.Name = "btnExportPdf";
+            btnExportPdf.Size = new Size(209, 40);
+            btnExportPdf.TabIndex = 6;
+            btnExportPdf.Text = "Export as PDF";
+            btnExportPdf.UseVisualStyleBackColor = true;
+            btnExportPdf.Click += btnExportPdf_Click;
+            // 
             // frmProductSaleReport
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(677, 419);
+            Controls.Add(btnExportPdf);
             Controls.Add(label3);
             Controls.Add(btnGenerateReport);
             Controls.Add(label2);
             Controls.Add(dateTimeEnd);
             Controls.Add(label1);
             Controls.Add(dateTimeStart);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "frmProductSaleReport";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Product Sales Reporting Tool";
@@ -121,5 +137,6 @@
         private DateTimePicker dateTimeEnd;
         private Button btnGenerateReport;
         private Label label3;
+        private Button btnExportPdf;
     }
 }

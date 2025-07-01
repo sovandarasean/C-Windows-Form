@@ -15,6 +15,11 @@ namespace Product_Sales_Reporting_Tool
             InitializeComponent();
         }
 
+        public void PasteDate(string startDate, string endDate)
+        {
+            labelDate.Text = $"From: {startDate} To: {endDate}";
+        }
+
         public void BindData(List<SaleDto> sales)
         {
             // Clear table (except header)
@@ -28,58 +33,52 @@ namespace Product_Sales_Reporting_Tool
                 .GroupBy(s => new { s.ProductCode, s.ProductName })
                 .ToList();
 
+            bool isFirst = true;
+
             foreach (var group in groupedSales)
             {
                 
                 XRTableRow headerRow = new XRTableRow();
-                XRTableCell productHeader = new XRTableCell
+
+                if (isFirst)
                 {
-                    Text = $"Product: {group.Key.ProductName} - {group.Key.ProductCode}",
-                    TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft,
-                    Font = new Font("Calibri", 10, FontStyle.Bold),
-                    Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 20, 5),
-                    Borders = DevExpress.XtraPrinting.BorderSide.Bottom,
-                    BorderWidth = 1,
-                   
-                };
-                headerRow.Cells.Add(productHeader);
-                reportTable.Rows.Add(headerRow);
+                    XRTableRow headerRow1 = reportTable.Rows[0];
+                    headerRow1.Cells.Clear();
+
+                    XRTableCell productHeader1 = new XRTableCell
+                    {
+                        Text = $"Product: {group.Key.ProductName} - {group.Key.ProductCode}",
+                        TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft,
+                        Font = new Font("Calibri", 10, FontStyle.Bold),
+                        Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 20, 5),
+                        Borders = DevExpress.XtraPrinting.BorderSide.Bottom,
+                        BorderWidth = 1,
+                        Weight = 3.0
+                    };
+
+                    headerRow1.Cells.Add(productHeader1);
+                    isFirst = false;
+                } else
+                {
+                    XRTableCell productHeader = new XRTableCell
+                    {
+                        Text = $"Product: {group.Key.ProductName} - {group.Key.ProductCode}",
+                        TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft,
+                        Font = new Font("Calibri", 10, FontStyle.Bold),
+                        Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 20, 5),
+                        Borders = DevExpress.XtraPrinting.BorderSide.Bottom,
+                        BorderWidth = 1,
+
+                    };
+                    headerRow.Cells.Add(productHeader);
+                    reportTable.Rows.Add(headerRow);
+                }
 
                 headerRow = new XRTableRow();
-                XRTableCell productNameHeader = new XRTableCell
-                {
-                    Text = "Product Name",
-                    TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter,
-                    Font = new Font("Calibri", 10, FontStyle.Bold),
-                    Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0),
-                    Borders = DevExpress.XtraPrinting.BorderSide.All,
-                    BorderWidth = 1,
+                AddCellHeader("Product Name", headerRow);
+                AddCellHeader("Quantity", headerRow);
+                AddCellHeader("Total", headerRow);
 
-                };
-
-                XRTableCell quantityHeader = new XRTableCell
-                {
-                    Text = "Quantity",
-                    TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter,
-                    Font = new Font("Calibri", 10, FontStyle.Bold),
-                    Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0),
-                    Borders = DevExpress.XtraPrinting.BorderSide.All,
-                    BorderWidth = 1,
-
-                };
-
-                XRTableCell totalHeader = new XRTableCell
-                {
-                    Text = "Total",
-                    TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter,
-                    Font = new Font("Calibri", 10, FontStyle.Bold),
-                    Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0),
-                    Borders = DevExpress.XtraPrinting.BorderSide.All,
-                    BorderWidth = 1,
-
-                };
-
-                headerRow.Cells.AddRange(new[] {productNameHeader, quantityHeader, totalHeader});
                 reportTable.Rows.Add(headerRow);
 
                 // Add data rows
@@ -100,69 +99,51 @@ namespace Product_Sales_Reporting_Tool
 
                 // Add summary row for group
                 XRTableRow summaryRow = new XRTableRow();
+                AddGroupCellSummary(group, "Group Summary:", summaryRow);
+                AddGroupCellSummary(group, group.Sum(x => x.Quantity).ToString(), summaryRow);
+                AddGroupCellSummary(group, group.Sum(x => x.Total).ToString("F2"), summaryRow);
 
-                XRTableCell summaryLabel = new XRTableCell
-                {
-                    Text = "Group Summary:",
-                    Font = new Font("Calibri", 10, FontStyle.Bold),
-                    Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0),
-                    Borders = DevExpress.XtraPrinting.BorderSide.None
-                };
-
-                XRTableCell totalQty = new XRTableCell
-                {
-                    Text = group.Sum(x => x.Quantity).ToString(),
-                    Font = new Font("Calibri", 10, FontStyle.Bold),
-                    Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0),
-                    Borders = DevExpress.XtraPrinting.BorderSide.None
-                };
-
-                XRTableCell totalAmount = new XRTableCell
-                {
-                    Text = group.Sum(x => x.Total).ToString("F2"),
-                    Font = new Font("Calibri", 10, FontStyle.Bold),
-                    Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0),
-                    Borders = DevExpress.XtraPrinting.BorderSide.None
-                };
-
-                summaryRow.Cells.AddRange(new[] { summaryLabel, totalQty, totalAmount });
                 reportTable.Rows.Add(summaryRow);
             }
 
             //grand total row
             int totalQuantity = sales.Sum(s => s.Quantity);
             decimal totalRevenue = sales.Sum(s => s.Total);
-            XRTableRow grandTotalRow = new XRTableRow();
+            XRTableRow grandTotalRow = grandTotalTable.Rows[0];
+            XRTableCell quantityCell = grandTotalRow.Cells[1];
+            XRTableCell grandTotalCell = grandTotalRow.Cells[2];
 
-            XRTableCell labelCell = new XRTableCell
+            quantityCell.Text = totalQuantity.ToString();
+            grandTotalCell.Text = totalRevenue.ToString("F2");
+        }
+
+        private void AddCellHeader(string text, XRTableRow headerRow)
+        {
+            XRTableCell cellHeader = new XRTableCell
             {
-                Text = "Grand Total:",
+                Text = text,
+                TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter,
                 Font = new Font("Calibri", 10, FontStyle.Bold),
-                Borders = DevExpress.XtraPrinting.BorderSide.Top,
-                Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 30, 0),
-                TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft,
+                Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0),
+                Borders = DevExpress.XtraPrinting.BorderSide.All,
+                BorderWidth = 1,
+
+            };
+            headerRow.Cells.Add(cellHeader);
+        }
+
+        private void AddGroupCellSummary(IGrouping<object, SaleDto> group, string text, XRTableRow summaryRow)
+        {
+            XRTableCell tableCell = new XRTableCell
+            {
+                Text = text,
+                TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter,
+                Font = new Font("Calibri", 10, FontStyle.Bold),
+                Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0),
+                Borders = DevExpress.XtraPrinting.BorderSide.None
             };
 
-            XRTableCell quantityTotalCell = new XRTableCell
-            {
-                Text = totalQuantity.ToString(),
-                Font = new Font("Calibri", 10, FontStyle.Bold),
-                Borders = DevExpress.XtraPrinting.BorderSide.Top,
-                Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 30, 0),
-                TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
-            };
-
-            XRTableCell revenueTotalCell = new XRTableCell
-            {
-                Text = totalRevenue.ToString("F2"),
-                Font = new Font("Calibri", 10, FontStyle.Bold),
-                Borders = DevExpress.XtraPrinting.BorderSide.Top,
-                Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 30, 0),
-                TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
-            };
-
-            grandTotalRow.Cells.AddRange(new[] { labelCell, quantityTotalCell, revenueTotalCell });
-            reportTable.Rows.Add(grandTotalRow);
+            summaryRow.Cells.Add(tableCell);
         }
     }
 }
