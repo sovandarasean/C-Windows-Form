@@ -106,6 +106,7 @@
             Controls.Add(label1);
             Controls.Add(dateTimeStart);
             Name = "frmProductSaleReport";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Product Sales Reporting Tool";
             Load += frmProductSaleReport_Load;
             ResumeLayout(false);

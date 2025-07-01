@@ -35,35 +35,44 @@ namespace Product_Sales_Reporting_Tool.Helpers
             
         }
 
-        public static List<SaleDto> QuerySaleBetweenDates(string startDate, string endDate)
+        public static List<SaleDto>? QuerySaleBetweenDates(string startDate, string endDate)
         {
+
             List<SaleDto> sales = new List<SaleDto>();
-            string query = "SELECT* FROM PRODUCTSALES WHERE SALEDATE BETWEEN @STARTDATE AND @ENDDATE";
 
-            using (SqlCommand sqlCommand = new SqlCommand(query, connection))
+            try
             {
-                sqlCommand.Parameters.AddWithValue("@STARTDATE", startDate);
-                sqlCommand.Parameters.AddWithValue("@ENDDATE", endDate);
+                string query = "SELECT* FROM PRODUCTSALES WHERE SALEDATE BETWEEN @STARTDATE AND @ENDDATE";
 
-                SqlDataReader reader = sqlCommand.ExecuteReader();
-
-                while (reader.Read())
+                using (SqlCommand sqlCommand = new SqlCommand(query, connection))
                 {
-                    sales.Add(new SaleDto
+                    sqlCommand.Parameters.AddWithValue("@STARTDATE", startDate);
+                    sqlCommand.Parameters.AddWithValue("@ENDDATE", endDate);
+
+                    SqlDataReader reader = sqlCommand.ExecuteReader();
+
+                    while (reader.Read())
                     {
-                        ProductCode = reader.GetString(1),
-                        ProductName = reader.GetString(2),
-                        Quantity = reader.GetInt32(3),
-                        UnitPrice = reader.GetDecimal(4),
-                        SaleDate = reader.GetDateTime(5)
-                    });
+                        sales.Add(new SaleDto
+                        {
+                            ProductCode = reader.GetString(1),
+                            ProductName = reader.GetString(2),
+                            Quantity = reader.GetInt32(3),
+                            UnitPrice = reader.GetDecimal(4),
+                            SaleDate = reader.GetDateTime(5)
+                        });
+                    }
+                    reader.Close();
+                    FileOperation.AppendToLog("Get all Sales: Query executed successfully!");
                 }
-                reader.Close();
-                FileOperation.AppendToLog("Get all Sales: Query executed successfully!");
+
+                return sales;
             }
-
-
-            return sales;
+            catch (Exception ex)
+            {
+                FileOperation.AppendToLog($"Failed to query all reports: {ex.Message}!");
+                return null;
+            }
         }
     }
 }

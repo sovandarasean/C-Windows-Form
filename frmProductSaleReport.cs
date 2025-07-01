@@ -29,11 +29,22 @@ namespace Product_Sales_Reporting_Tool
 
             sales = DBOperation.QuerySaleBetweenDates(startDate, endDate);
 
-            SaleReportXtraReport report = new SaleReportXtraReport();
-            report.BindData(sales);
+            if (sales == null)
+            {
+                MessageBox.Show("Failed to query all reports!", "Query Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            ReportPrintTool printTool = new ReportPrintTool(report);
-            printTool.ShowPreviewDialog();
+            } else if (sales.Count > 0)
+            {
+                SaleReportXtraReport report = new SaleReportXtraReport();
+                report.BindData(sales);
+
+                ReportPrintTool printTool = new ReportPrintTool(report);
+                printTool.ShowPreview();
+
+            } else
+            {
+                MessageBox.Show("There's no record were found!","Result",MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
 
         }
     }
