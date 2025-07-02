@@ -37,11 +37,13 @@
             btnExportPdf = new Button();
             filterProductName = new TextBox();
             label4 = new Label();
+            groupBox1 = new GroupBox();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // dateTimeStart
             // 
-            dateTimeStart.Location = new Point(226, 140);
+            dateTimeStart.Location = new Point(97, 34);
             dateTimeStart.Name = "dateTimeStart";
             dateTimeStart.Size = new Size(250, 27);
             dateTimeStart.TabIndex = 0;
@@ -50,7 +52,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Calibri", 10F);
-            label1.Location = new Point(139, 143);
+            label1.Location = new Point(10, 37);
             label1.Name = "label1";
             label1.Size = new Size(85, 21);
             label1.TabIndex = 1;
@@ -61,7 +63,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Calibri", 10F);
-            label2.Location = new Point(139, 176);
+            label2.Location = new Point(10, 70);
             label2.Name = "label2";
             label2.Size = new Size(77, 21);
             label2.TabIndex = 3;
@@ -70,7 +72,7 @@
             // 
             // dateTimeEnd
             // 
-            dateTimeEnd.Location = new Point(226, 173);
+            dateTimeEnd.Location = new Point(97, 67);
             dateTimeEnd.Name = "dateTimeEnd";
             dateTimeEnd.Size = new Size(250, 27);
             dateTimeEnd.TabIndex = 2;
@@ -78,7 +80,7 @@
             // btnGenerateReport
             // 
             btnGenerateReport.Font = new Font("Calibri", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnGenerateReport.Location = new Point(245, 225);
+            btnGenerateReport.Location = new Point(236, 266);
             btnGenerateReport.Name = "btnGenerateReport";
             btnGenerateReport.Size = new Size(209, 40);
             btnGenerateReport.TabIndex = 4;
@@ -101,7 +103,7 @@
             // btnExportPdf
             // 
             btnExportPdf.Font = new Font("Calibri", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnExportPdf.Location = new Point(245, 271);
+            btnExportPdf.Location = new Point(236, 312);
             btnExportPdf.Name = "btnExportPdf";
             btnExportPdf.Size = new Size(209, 40);
             btnExportPdf.TabIndex = 6;
@@ -128,26 +130,38 @@
             label4.Text = "Filter:";
             label4.TextAlign = ContentAlignment.MiddleLeft;
             // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(label1);
+            groupBox1.Controls.Add(dateTimeStart);
+            groupBox1.Controls.Add(dateTimeEnd);
+            groupBox1.Controls.Add(label2);
+            groupBox1.Location = new Point(139, 138);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(369, 110);
+            groupBox1.TabIndex = 8;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Date";
+            // 
             // frmProductSaleReport
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(677, 419);
+            Controls.Add(groupBox1);
             Controls.Add(filterProductName);
             Controls.Add(btnExportPdf);
             Controls.Add(label3);
             Controls.Add(btnGenerateReport);
-            Controls.Add(label2);
-            Controls.Add(dateTimeEnd);
             Controls.Add(label4);
-            Controls.Add(label1);
-            Controls.Add(dateTimeStart);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "frmProductSaleReport";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Product Sales Reporting Tool";
             Load += frmProductSaleReport_Load;
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -163,5 +177,6 @@
         private Button btnExportPdf;
         private TextBox filterProductName;
         private Label label4;
+        private GroupBox groupBox1;
     }
 }
