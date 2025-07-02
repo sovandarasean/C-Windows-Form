@@ -58,7 +58,7 @@
             // 
             // labelDate
             // 
-            this.labelDate.Font = new DevExpress.Drawing.DXFont("Calibri", 9.5F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.labelDate.Font = new DevExpress.Drawing.DXFont("Noto Sans Khmer", 8.5F);
             this.labelDate.LocationFloat = new DevExpress.Utils.PointFloat(0F, 17.4762F);
             this.labelDate.Multiline = true;
             this.labelDate.Name = "labelDate";
@@ -98,7 +98,7 @@
             // 
             this.grandTotalTable.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.grandTotalTable.BorderWidth = 1F;
-            this.grandTotalTable.Font = new DevExpress.Drawing.DXFont("Calibri", 10F);
+            this.grandTotalTable.Font = new DevExpress.Drawing.DXFont("Noto Sans Khmer", 10F);
             this.grandTotalTable.LocationFloat = new DevExpress.Utils.PointFloat(88.5715F, 162.7142F);
             this.grandTotalTable.Name = "grandTotalTable";
             this.grandTotalTable.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
@@ -123,7 +123,7 @@
             // grandTotalText
             // 
             this.grandTotalText.Borders = DevExpress.XtraPrinting.BorderSide.None;
-            this.grandTotalText.Font = new DevExpress.Drawing.DXFont("Calibri", 10F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.grandTotalText.Font = new DevExpress.Drawing.DXFont("Noto Sans Khmer", 10F, DevExpress.Drawing.DXFontStyle.Bold);
             this.grandTotalText.Multiline = true;
             this.grandTotalText.Name = "grandTotalText";
             this.grandTotalText.StylePriority.UseBorders = false;
@@ -135,7 +135,7 @@
             // 
             // quantityCell
             // 
-            this.quantityCell.Font = new DevExpress.Drawing.DXFont("Calibri", 10F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.quantityCell.Font = new DevExpress.Drawing.DXFont("Noto Sans Khmer", 10F, DevExpress.Drawing.DXFontStyle.Bold);
             this.quantityCell.Multiline = true;
             this.quantityCell.Name = "quantityCell";
             this.quantityCell.StylePriority.UseFont = false;
@@ -144,7 +144,7 @@
             // grandTotalCell
             // 
             this.grandTotalCell.Borders = DevExpress.XtraPrinting.BorderSide.None;
-            this.grandTotalCell.Font = new DevExpress.Drawing.DXFont("Calibri", 10F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.grandTotalCell.Font = new DevExpress.Drawing.DXFont("Noto Sans Khmer", 10F, DevExpress.Drawing.DXFontStyle.Bold);
             this.grandTotalCell.Multiline = true;
             this.grandTotalCell.Name = "grandTotalCell";
             this.grandTotalCell.StylePriority.UseBorders = false;
@@ -164,7 +164,7 @@
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.reportTable.BorderWidth = 1F;
-            this.reportTable.Font = new DevExpress.Drawing.DXFont("Calibri", 10F);
+            this.reportTable.Font = new DevExpress.Drawing.DXFont("Noto Sans Khmer", 10F);
             this.reportTable.LocationFloat = new DevExpress.Utils.PointFloat(88.5715F, 98.04758F);
             this.reportTable.Name = "reportTable";
             this.reportTable.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
@@ -219,8 +219,8 @@
             // 
             // xrLabel1
             // 
-            this.xrLabel1.Font = new DevExpress.Drawing.DXFont("Calibri", 20F, ((DevExpress.Drawing.DXFontStyle)((DevExpress.Drawing.DXFontStyle.Bold | DevExpress.Drawing.DXFontStyle.Underline))));
-            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(219.0476F, 9.999988F);
+            this.xrLabel1.Font = new DevExpress.Drawing.DXFont("Noto Sans Khmer", 17F, ((DevExpress.Drawing.DXFontStyle)((DevExpress.Drawing.DXFontStyle.Bold | DevExpress.Drawing.DXFontStyle.Underline))));
+            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(230.516F, 10F);
             this.xrLabel1.Multiline = true;
             this.xrLabel1.Name = "xrLabel1";
             this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);

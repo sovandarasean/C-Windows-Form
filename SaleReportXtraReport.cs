@@ -49,7 +49,7 @@ namespace Product_Sales_Reporting_Tool
                     {
                         Text = $"Product: {group.Key.ProductName} - {group.Key.ProductCode}",
                         TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft,
-                        Font = new Font("Calibri", 10, FontStyle.Bold),
+                        Font = new Font("Noto Sans Khmer", 10, FontStyle.Bold),
                         Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 20, 5),
                         Borders = DevExpress.XtraPrinting.BorderSide.Bottom,
                         BorderWidth = 1,
@@ -64,7 +64,7 @@ namespace Product_Sales_Reporting_Tool
                     {
                         Text = $"Product: {group.Key.ProductName} - {group.Key.ProductCode}",
                         TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft,
-                        Font = new Font("Calibri", 10, FontStyle.Bold),
+                        Font = new Font("Noto Sans Khmer", 10, FontStyle.Bold),
                         Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 20, 5),
                         Borders = DevExpress.XtraPrinting.BorderSide.Bottom,
                         BorderWidth = 1,
@@ -123,7 +123,7 @@ namespace Product_Sales_Reporting_Tool
             {
                 Text = text,
                 TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter,
-                Font = new Font("Calibri", 10, FontStyle.Bold),
+                Font = new Font("Noto Sans Khmer", 10, FontStyle.Bold),
                 Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0),
                 Borders = DevExpress.XtraPrinting.BorderSide.All,
                 BorderWidth = 1,
@@ -138,8 +138,8 @@ namespace Product_Sales_Reporting_Tool
             {
                 Text = text,
                 TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter,
-                Font = new Font("Calibri", 10, FontStyle.Bold),
-                Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0),
+                Font = new Font("Noto Sans Khmer", 10, FontStyle.Bold),
+                Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 5, 0),
                 Borders = DevExpress.XtraPrinting.BorderSide.None
             };
 

@@ -35,7 +35,7 @@ namespace Product_Sales_Reporting_Tool.Helpers
             
         }
 
-        public static List<SaleDto>? QuerySaleBetweenDates(string startDate, string endDate)
+        public static List<SaleDto>? QuerySaleBetweenDates(string startDate, string endDate, string filterName)
         {
             List<SaleDto> sales = new List<SaleDto>();
 
@@ -65,6 +65,13 @@ namespace Product_Sales_Reporting_Tool.Helpers
                     }
                     reader.Close();
                     FileOperation.AppendToLog("Get all Sales: Query executed successfully!");
+
+                    //filter by productname
+                    if (sales.Count > 0 && filterName != string.Empty)
+                    {
+                        var filterReport = sales.Where(sale => sale.ProductName.Contains(filterName, StringComparison.OrdinalIgnoreCase)).ToList();
+                        return filterReport;
+                    }
                 }
 
                 return sales;

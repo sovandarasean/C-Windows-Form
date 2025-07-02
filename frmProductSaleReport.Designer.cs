@@ -35,11 +35,13 @@
             btnGenerateReport = new Button();
             label3 = new Label();
             btnExportPdf = new Button();
+            filterProductName = new TextBox();
+            label4 = new Label();
             SuspendLayout();
             // 
             // dateTimeStart
             // 
-            dateTimeStart.Location = new Point(226, 114);
+            dateTimeStart.Location = new Point(226, 140);
             dateTimeStart.Name = "dateTimeStart";
             dateTimeStart.Size = new Size(250, 27);
             dateTimeStart.TabIndex = 0;
@@ -48,7 +50,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Calibri", 10F);
-            label1.Location = new Point(139, 117);
+            label1.Location = new Point(139, 143);
             label1.Name = "label1";
             label1.Size = new Size(85, 21);
             label1.TabIndex = 1;
@@ -59,7 +61,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Calibri", 10F);
-            label2.Location = new Point(139, 150);
+            label2.Location = new Point(139, 176);
             label2.Name = "label2";
             label2.Size = new Size(77, 21);
             label2.TabIndex = 3;
@@ -68,7 +70,7 @@
             // 
             // dateTimeEnd
             // 
-            dateTimeEnd.Location = new Point(226, 147);
+            dateTimeEnd.Location = new Point(226, 173);
             dateTimeEnd.Name = "dateTimeEnd";
             dateTimeEnd.Size = new Size(250, 27);
             dateTimeEnd.TabIndex = 2;
@@ -76,7 +78,7 @@
             // btnGenerateReport
             // 
             btnGenerateReport.Font = new Font("Calibri", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnGenerateReport.Location = new Point(245, 199);
+            btnGenerateReport.Location = new Point(245, 225);
             btnGenerateReport.Name = "btnGenerateReport";
             btnGenerateReport.Size = new Size(209, 40);
             btnGenerateReport.TabIndex = 4;
@@ -99,7 +101,7 @@
             // btnExportPdf
             // 
             btnExportPdf.Font = new Font("Calibri", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnExportPdf.Location = new Point(245, 245);
+            btnExportPdf.Location = new Point(245, 271);
             btnExportPdf.Name = "btnExportPdf";
             btnExportPdf.Size = new Size(209, 40);
             btnExportPdf.TabIndex = 6;
@@ -107,16 +109,37 @@
             btnExportPdf.UseVisualStyleBackColor = true;
             btnExportPdf.Click += btnExportPdf_Click;
             // 
+            // filterProductName
+            // 
+            filterProductName.Location = new Point(226, 105);
+            filterProductName.Name = "filterProductName";
+            filterProductName.PlaceholderText = "Enter product's name/keep it blank";
+            filterProductName.Size = new Size(250, 27);
+            filterProductName.TabIndex = 7;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Calibri", 10F);
+            label4.Location = new Point(139, 109);
+            label4.Name = "label4";
+            label4.Size = new Size(51, 21);
+            label4.TabIndex = 1;
+            label4.Text = "Filter:";
+            label4.TextAlign = ContentAlignment.MiddleLeft;
+            // 
             // frmProductSaleReport
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(677, 419);
+            Controls.Add(filterProductName);
             Controls.Add(btnExportPdf);
             Controls.Add(label3);
             Controls.Add(btnGenerateReport);
             Controls.Add(label2);
             Controls.Add(dateTimeEnd);
+            Controls.Add(label4);
             Controls.Add(label1);
             Controls.Add(dateTimeStart);
             FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -138,5 +161,7 @@
         private Button btnGenerateReport;
         private Label label3;
         private Button btnExportPdf;
+        private TextBox filterProductName;
+        private Label label4;
     }
 }

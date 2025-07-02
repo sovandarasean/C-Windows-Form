@@ -29,12 +29,13 @@ namespace Product_Sales_Reporting_Tool
 
         private void btnGenerateReport_Click(object sender, EventArgs e)
         {
+            string filterName = filterProductName.Text.Trim();
             startDate = dateTimeStart.Value.ToString("yyyy-MM-dd");
             endDate = dateTimeEnd.Value.ToString("yyyy-MM-dd");
 
             report = new SaleReportXtraReport();
             sales = new List<SaleDto>();
-            sales = DBOperation.QuerySaleBetweenDates(startDate, endDate);
+            sales = DBOperation.QuerySaleBetweenDates(startDate, endDate, filterName);
 
             if (sales == null)
             {
@@ -108,6 +109,9 @@ namespace Product_Sales_Reporting_Tool
 
                 }
 
+            } else
+            {
+                MessageBox.Show("Please Generate PDF first!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }
