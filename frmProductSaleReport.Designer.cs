@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProductSaleReport));
             dateTimeStart = new DateTimePicker();
             label1 = new Label();
             label2 = new Label();
@@ -43,16 +44,16 @@
             // 
             // dateTimeStart
             // 
-            dateTimeStart.Location = new Point(97, 34);
+            dateTimeStart.Location = new Point(97, 31);
             dateTimeStart.Name = "dateTimeStart";
-            dateTimeStart.Size = new Size(250, 27);
+            dateTimeStart.Size = new Size(250, 26);
             dateTimeStart.TabIndex = 0;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Calibri", 10F);
-            label1.Location = new Point(10, 37);
+            label1.Location = new Point(10, 33);
             label1.Name = "label1";
             label1.Size = new Size(85, 21);
             label1.TabIndex = 1;
@@ -63,7 +64,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Calibri", 10F);
-            label2.Location = new Point(10, 70);
+            label2.Location = new Point(10, 63);
             label2.Name = "label2";
             label2.Size = new Size(77, 21);
             label2.TabIndex = 3;
@@ -72,17 +73,17 @@
             // 
             // dateTimeEnd
             // 
-            dateTimeEnd.Location = new Point(97, 67);
+            dateTimeEnd.Location = new Point(97, 60);
             dateTimeEnd.Name = "dateTimeEnd";
-            dateTimeEnd.Size = new Size(250, 27);
+            dateTimeEnd.Size = new Size(250, 26);
             dateTimeEnd.TabIndex = 2;
             // 
             // btnGenerateReport
             // 
             btnGenerateReport.Font = new Font("Calibri", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnGenerateReport.Location = new Point(236, 266);
+            btnGenerateReport.Location = new Point(236, 239);
             btnGenerateReport.Name = "btnGenerateReport";
-            btnGenerateReport.Size = new Size(209, 40);
+            btnGenerateReport.Size = new Size(209, 36);
             btnGenerateReport.TabIndex = 4;
             btnGenerateReport.Text = "Generate Report";
             btnGenerateReport.UseVisualStyleBackColor = true;
@@ -93,7 +94,7 @@
             label3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label3.AutoSize = true;
             label3.Font = new Font("Calibri", 18F, FontStyle.Bold | FontStyle.Underline);
-            label3.Location = new Point(183, 24);
+            label3.Location = new Point(183, 22);
             label3.Name = "label3";
             label3.Size = new Size(315, 37);
             label3.TabIndex = 5;
@@ -103,9 +104,9 @@
             // btnExportPdf
             // 
             btnExportPdf.Font = new Font("Calibri", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnExportPdf.Location = new Point(236, 312);
+            btnExportPdf.Location = new Point(236, 281);
             btnExportPdf.Name = "btnExportPdf";
-            btnExportPdf.Size = new Size(209, 40);
+            btnExportPdf.Size = new Size(209, 36);
             btnExportPdf.TabIndex = 6;
             btnExportPdf.Text = "Export as PDF";
             btnExportPdf.UseVisualStyleBackColor = true;
@@ -113,17 +114,17 @@
             // 
             // filterProductName
             // 
-            filterProductName.Location = new Point(226, 105);
+            filterProductName.Location = new Point(236, 94);
             filterProductName.Name = "filterProductName";
             filterProductName.PlaceholderText = "Enter product's name/keep it blank";
-            filterProductName.Size = new Size(250, 27);
+            filterProductName.Size = new Size(250, 26);
             filterProductName.TabIndex = 7;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Calibri", 10F);
-            label4.Location = new Point(139, 109);
+            label4.Location = new Point(145, 98);
             label4.Name = "label4";
             label4.Size = new Size(51, 21);
             label4.TabIndex = 1;
@@ -136,25 +137,27 @@
             groupBox1.Controls.Add(dateTimeStart);
             groupBox1.Controls.Add(dateTimeEnd);
             groupBox1.Controls.Add(label2);
-            groupBox1.Location = new Point(139, 138);
+            groupBox1.Location = new Point(139, 124);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(369, 110);
+            groupBox1.Size = new Size(369, 99);
             groupBox1.TabIndex = 8;
             groupBox1.TabStop = false;
             groupBox1.Text = "Date";
             // 
             // frmProductSaleReport
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(8F, 18F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(677, 419);
+            ClientSize = new Size(677, 377);
             Controls.Add(groupBox1);
             Controls.Add(filterProductName);
             Controls.Add(btnExportPdf);
             Controls.Add(label3);
             Controls.Add(btnGenerateReport);
             Controls.Add(label4);
+            Font = new Font("Calibri", 9F);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "frmProductSaleReport";
             StartPosition = FormStartPosition.CenterScreen;
