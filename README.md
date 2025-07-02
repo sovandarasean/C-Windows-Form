@@ -52,6 +52,9 @@ string serverName = @"(localdb)\MSSQLLocalDB";
     style="border-radius: 15px;">
 </p>
 
+### 🅰️ Font
+In **SaleReportXtraReport** Design, I use with **Noto Sans Khmer**. If you don't have one, you can install from the folder **fonts** in the project above.
+
 ### 🖨️ Report Sample
 <p align="center">
   <img 
