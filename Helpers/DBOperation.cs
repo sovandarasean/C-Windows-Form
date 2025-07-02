@@ -37,18 +37,19 @@ namespace Product_Sales_Reporting_Tool.Helpers
 
         public static List<SaleDto>? QuerySaleBetweenDates(string startDate, string endDate)
         {
-
             List<SaleDto> sales = new List<SaleDto>();
 
             try
             {
-                string query = "SELECT* FROM PRODUCTSALES WHERE SALEDATE BETWEEN @STARTDATE AND @ENDDATE";
+                //string query = "SELECT* FROM PRODUCTSALES WHERE SALEDATE BETWEEN @STARTDATE AND @ENDDATE";
+                //use storedprocedure
+                string query = "QuerySaleBetweenDates";
 
                 using (SqlCommand sqlCommand = new SqlCommand(query, connection))
                 {
-                    sqlCommand.Parameters.AddWithValue("@STARTDATE", startDate);
-                    sqlCommand.Parameters.AddWithValue("@ENDDATE", endDate);
-
+                    sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    sqlCommand.Parameters.Add("@STARTDATE", System.Data.SqlDbType.Date).Value = startDate;
+                    sqlCommand.Parameters.Add("@ENDDATE", System.Data.SqlDbType.Date).Value = endDate;
                     SqlDataReader reader = sqlCommand.ExecuteReader();
 
                     while (reader.Read())
